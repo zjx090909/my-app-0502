@@ -1,0 +1,32 @@
+{
+  "myapp": [
+    {
+      "id": 1,
+      "title": "Manager",
+      "name": "Jessica Zhang",
+      "mobile":"+12345510001",
+      "email":"js01@gmail.com"
+    },
+    {
+      "id": 2,
+      "title": "Supervisor",
+      "name": "Jason Wang",
+      "mobile":"+13345510002",
+      "email":"jw02@gmail.com"
+    },
+    {
+      "id": 3,
+      "title": "Chief",
+      "name": "Mike Jordan",
+      "mobile":"+13325510003",
+      "email":"mj03@gmail.com"
+    },
+    {
+      "id": 4,
+      "title": "Employee",
+      "name": "John Mac",
+      "mobile":"+14425510004",
+      "email":"jm04@gmail.com"
+    }
+  ]
+}

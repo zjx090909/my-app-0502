@@ -1,0 +1,31 @@
+<p>welcome to my application!</p>
+
+<button (click) = "goToPage()">Entry Page</button>
+<br>
+<br>
+<br>
+
+<a href [routerLink]="['/entry']">Entry page</a>
+<br>
+<br>
+<br>
+
+{{birthday}}
+<br>
+<br>
+<!--pipe formating-->
+{{birthday|date:"yyyy-M-dd"}}
+
+<br>
+<br>
+
+<!--currency pipe-->
+{{65.243| currency:'CAD':'symbol':"2.2-2"}}
+<br>
+<br>
+{{65.243| currency:'USD':'symbol':"2.2-2"}}
+<br>
+<br>
+{{65.243| currency:'EUR':'symbol':"2.2-2"}}
+
+

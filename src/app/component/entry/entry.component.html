@@ -1,0 +1,129 @@
+<div [formGroup]="myForm">
+<mat-card>
+	<mat-card-content>
+		
+		<mat-label>Choose the languge:</mat-label>
+		<mat-radio-group aria-label="Select an option" formControlName="buttonFormControl" required>
+			<!--event binding-->
+			<!--prewrite a function in entry.components.ts-->
+			<!--import { MatRadioChange } from '@angular/material/radio';-->
+			<mat-radio-button (change)="changeEvent($event)" value="1">English</mat-radio-button>
+			<mat-radio-button value="2" >French</mat-radio-button>
+		  </mat-radio-group>
+		
+		  <br/>
+		  <br/>
+
+		  <mat-form-field appearance="fill">
+		  <mat-label>First Name: </mat-label>
+			<input matInput placeholder="Ex. John" type="First Name" [formControlName]="'firstNameFormControl'" required>
+			</mat-form-field>
+			<br/>
+			<br/>
+		
+			
+			<mat-form-field>
+			<mat-label>Last Name: </mat-label>
+			<input matInput placeholder="Ex. Smith" type="Last Name" [formControlName]="'lastNameFormControl'" required>
+		    </mat-form-field>
+			<br/>
+			<br/>
+
+			<mat-form-field>
+			<mat-label>Email: </mat-label>
+    		<input matInput type="email" placeholder="Ex. john@example.com" [formControlName]="'emailFormControl'" required/>
+			</mat-form-field>
+			<br/>
+			<br/>	
+            
+			<!--basic native select
+			<label>Select a Province: </label>
+			<mat-form-field>
+				<mat-label>Provinces</mat-label>
+				<select matNativeControl required>
+					<option value="Alberta">Alberta</option>
+					<option value="British Columbia">British Columbia</option>
+					<option value="Manitoba">Manitoba</option>
+					<option value="New Brunswick">New Brunswick</option>
+					<option value="Newfoundland and Labrador">Newfoundland and Labrador</option>
+					<option value="Nova Scotia">Nova Scotia</option>
+					<option value="Prince Edward Island">Prince Edward Island</option>
+					<option value="Quebec">Quebec</option>
+					<option value="Saskatchewan">Saskatchewan</option>
+					<option value="Northwest Territories">Northwest Territories</option>
+					<option value="Nunavut">Nunavut</option>
+					<option value="Yukon">Yukon</option>
+				  </select>
+			  </mat-form-field>
+			  <br/>
+			  <br/>
+			  --> 
+
+
+			<!--basic mat-select-->			  
+			<mat-form-field>
+				<mat-label>Select Province</mat-label>
+				<!--basic binding-->
+				<mat-select [formControlName]="'selectFormControl'" required>
+				  <mat-option *ngFor="let province of provinces" [value]="province">{{ province }}</mat-option>
+				</mat-select>
+			  </mat-form-field>
+			  <p>{{myForm.get('selectFormControl').value}}</p>		  
+	</mat-card-content>
+  </mat-card>
+
+</div>
+
+
+<div class="container allMyapp">
+	<a mat-raised-button color="primary" routerLink="/add-users">+ Add Users</a>
+</div>
+<div class="container">
+	<table mat-table [dataSource]="allMyapp" class="mat-elevation-z8">
+
+		<!--- Note that these columns can be defined in any order.
+			  The actual rendered columns are set as a property on the row definition" -->
+	  
+		<!-- Position Column -->
+		<ng-container matColumnDef="id">
+		  <th mat-header-cell *matHeaderCellDef> No. </th>
+		  <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+		</ng-container>
+	  
+		<!-- Name Column -->
+		<ng-container matColumnDef="title">
+		  <th mat-header-cell *matHeaderCellDef> Title: </th>
+		  <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+		</ng-container>
+	  
+		<!-- Weight Column -->
+		<ng-container matColumnDef="name">
+			<th mat-header-cell *matHeaderCellDef> Name </th>
+			<td mat-cell *matCellDef="let element"> {{element.name}} </td>
+		  </ng-container>
+
+		<!-- Symbol Column -->
+		<ng-container matColumnDef="mobile">
+			<th mat-header-cell *matHeaderCellDef> Mobile </th>
+			<td mat-cell *matCellDef="let element"> {{element.mobile}} </td>
+		  </ng-container>
+
+		  <!-- Symbol Column -->
+		<ng-container matColumnDef="email">
+			<th mat-header-cell *matHeaderCellDef> Email </th>
+			<td mat-cell *matCellDef="let element"> {{element.email}} </td>
+		  </ng-container>
+	  
+		<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+		<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+	  </table>
+	  
+	  
+
+</div>
+
+
+	
+<p>entry works!</p>
+
+  
