@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import { provinces } from '/Users/zhangjianxia/my-app-0502/src/app/component/entry/provinces';
+import { provinces } from 'src/app/component/entry/provinces';
 import { MatRadioChange } from '@angular/material/radio';
 import { Myapp } from 'src/app/myapp';
 import { MyappService } from 'src/app/myapp.service';
+import { ServerService } from 'src/app/server.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class EntryComponent implements OnInit {
 
   allMyapp:Myapp[]=[];
   displayedColumns: string[] = ['id', 'title','name','mobile','email'];
-  constructor(private myapp:MyappService) { }
+  constructor(private myapp:MyappService, private server: ServerService) { }
 
   provinces = provinces;
   number1 = 1;
@@ -74,6 +75,30 @@ export class EntryComponent implements OnInit {
         this.allMyapp = [data];
       }
       console.log(this.allMyapp);
+    });
+  }
+
+  addUser() {
+    const newUser = { //jason format value:  key:value
+      firstname: this.myForm.get('firstNameFormControl').value, 
+      lastname: this.myForm.get('lastNameFormControl').value,
+      email: this.myForm.get('emailFormControl').value,
+      province: this.myForm.get('selectFormControl').value,
+    };
+    this.server.createUser(newUser).then(() => {
+      this.getUser();    //verify if user added
+    });
+  }
+
+  private getUser() {
+    this.server.getUser().then((response: any) => {
+      console.log('Response', response);
+      //this.resident = response.map((ev) => {
+        //ev.body = ev.description;
+        //ev.header = ev.name;
+        //ev.icon = 'fa-clock-o';
+        //return ev;
+      //});
     });
   }
 
