@@ -68,7 +68,11 @@
 				  <mat-option *ngFor="let province of provinces" [value]="province">{{ province }}</mat-option>
 				</mat-select>
 			  </mat-form-field>
-			  <p>{{myForm.get('selectFormControl').value}}</p>		  
+			  <p>{{myForm.get('selectFormControl').value}}</p>
+			  
+			  <!-- Submit button -->
+			  <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
+			  
 	</mat-card-content>
   </mat-card>
 

@@ -9,10 +9,10 @@ import { Myapp } from '../myapp';
 export class AddUsersComponent implements OnInit{
   userRecords:Myapp = {
     id:0,
-    title:'',
-    name:'',
-    mobile:'',
-    email:''
+    firstname:'',
+    lastname:'',
+    email:'',
+    province:''
   }
   constructor(){}
   ngOnInit(): void {   

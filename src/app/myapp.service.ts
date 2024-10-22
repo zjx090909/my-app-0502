@@ -12,11 +12,11 @@ export class MyappService {
 
 //get all records
 getAll():Observable<Myapp[]>{
-  return this.http.get<Myapp[]>("http://localhost:3000/myapp");
+  return this.http.get<Myapp[]>("http://localhost:8080/users");
 }
 
 // add records
 create(payload:Myapp): Observable<Myapp>{
-  return this.http.post<Myapp>("http://localhost:3000/myapp", payload);
+  return this.http.post<Myapp>("http://localhost:8080/users", payload);
 }
 }

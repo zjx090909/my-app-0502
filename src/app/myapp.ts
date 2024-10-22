@@ -1,7 +1,7 @@
 export interface Myapp {
-	id: number,
-    title: string,
-    name: string,
-    mobile: string,
-    email: string
+	id?: number,
+    firstname: string,
+    lastname: string,
+    email: string,
+    province: string
 }
