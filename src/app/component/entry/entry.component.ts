@@ -15,31 +15,31 @@ export class EntryComponent implements OnInit {
 
   allMyapp:Myapp[]=[];
   displayedColumns: string[] = ['id', 'title','name','mobile','email'];
-  constructor(private myapp:MyappService) { }
+
+  constructor(private myapp: MyappService) { }
 
   provinces = provinces;
   number1 = 1;
   
   myForm:FormGroup;
 
-  
 
   ngOnInit() {
     this.myForm = new FormGroup({
 
       buttonFormControl : new FormControl('', Validators.required),
-  //custom validator
-  emailFormControl : new FormControl('', [Validators.required, this.validateEmail]),
-  firstNameFormControl : new FormControl('Zhang', Validators.required),
-  //built-in validator
-  lastNameFormControl : new FormControl('', [Validators.required, Validators.maxLength(10)]),
-  selectFormControl : new FormControl('', Validators.required),
+      //custom validator
+      emailFormControl : new FormControl('', [Validators.required, this.validateEmail]),
+      firstNameFormControl : new FormControl('John', Validators.required),
+      //built-in validator
+      lastNameFormControl : new FormControl('', [Validators.required, Validators.maxLength(10)]),
+      selectFormControl : new FormControl('', Validators.required),
   });
 
-  //Subscribing to input changes
-  this.myForm.get('lastNameFormControl').valueChanges.subscribe(v=>{
-    console.log(v);
-    this.myForm.get('emailFormControl').setValue('jz@gmail.com')
+      //Subscribing to input changes
+      this.myForm.get('lastNameFormControl').valueChanges.subscribe(v=>{
+      console.log(v);
+      this.myForm.get('emailFormControl').setValue('jz@gmail.com')
     })
 
     console.log("Provinces = ", this.provinces)
@@ -77,6 +77,25 @@ export class EntryComponent implements OnInit {
     });
   }
 
+   // Submit form
+   onSubmit() {
+    if (this.myForm.valid) {
+      const formData: Myapp = {
+        firstname: this.myForm.get('firstNameFormControl').value,
+        lastname: this.myForm.get('lastNameFormControl').value,
+        email: this.myForm.get('emailFormControl').value,
+        province: this.myForm.get('selectFormControl').value
+      };
 
+      this.myapp.create(formData).subscribe(response => {
+        console.log('Form successfully submitted', response);
+        this.getAllUserData(); // Refresh the data after submission
+      }, error => {
+        console.error('Error while submitting form', error);
+      });
+    } else {
+      console.log('Form is invalid');
+    }
+  }
 
 }
