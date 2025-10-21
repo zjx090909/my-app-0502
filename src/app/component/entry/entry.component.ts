@@ -14,7 +14,7 @@ import { MyappService } from 'src/app/myapp.service';
 export class EntryComponent implements OnInit {
 
   allMyapp:Myapp[]=[];
-  displayedColumns: string[] = ['id', 'title','name','mobile','email'];
+  displayedColumns: string[] = ['id', 'firstname','lastname','province','email'];
 
   constructor(private myapp: MyappService) { }
 
